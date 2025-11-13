@@ -51,6 +51,4 @@ Thumbs.db
 # Other
 *.class
 
-# Ignore cloned repos
-BankingApp/
-hdfc-retail-banking/
+
