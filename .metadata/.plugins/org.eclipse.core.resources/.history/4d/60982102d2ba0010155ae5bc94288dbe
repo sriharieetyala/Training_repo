@@ -1,0 +1,16 @@
+package com.app.dto;
+
+public record Account(String acctno,double aactbalanace) {
+
+	public String getAccountNo() {
+		// TODO Auto-generated method stub
+		return acctno;
+	}
+
+	public String getBalance() {
+		// TODO Auto-generated method stub
+		return acctbalance;
+	}
+
+}
+

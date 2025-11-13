@@ -1,0 +1,84 @@
+package com.app.PaymentOps;
+import com.app.dto.Account;
+
+public class PaymentOps {
+
+		    public static void main(String args[]) {
+		        // sample accounts (adjust constructor to match your Account class)
+		        Account acct = new Account("342432424424", 1000.0);
+		        Account acct2 = new Account("443424324000", 250.0);
+
+		        System.out.println("account details - " + acct.getAccountNo() + " balance " + acct.getBalance());
+		        System.out.println("account details - " + acct2.getAccountNo() + " balance " + acct2.getBalance());
+
+		        PaymentsOps obj = new PaymentsOps();
+
+		        // transfer 200 from acct -> acct2
+		        double amountToTransfer = 200.0;
+		        boolean success = obj.funstransfer(acct, acct2, amountToTransfer);
+
+		        System.out.println("transfer success: " + success);
+		        System.out.println("after transfer, from-account balance: " + acct.getBalance());
+		        System.out.println("after transfer, to-account balance:   " + acct2.getBalance());
+		    }
+
+		    /**
+		     * Performs a funds transfer from acct (fromAccount) to acct2 (toAccount)
+		     * Returns true if transfer succeeded, false otherwise.
+		     *
+		     * Assumes Account has:
+		     *   double getBalance()
+		     *   void setBalance(double)
+		     *   String getAccountNo()
+		     *
+		     * If your Account uses different method names, swap them accordingly.
+		     */
+		    public boolean funstransfer(Account acct, Account acct2, double amount) {
+		        if (acct == null || acct2 == null) {
+		            System.out.println("one of the accounts is null");
+		            return false;
+		        }
+
+		        if (amount <= 0) {
+		            System.out.println("invalid amount: " + amount);
+		            return false;
+		        }
+
+		        double fromBalance = acct.getBalance();
+		        String fromAccNo = acct.getAccountNo();
+		        String toAccNo = acct2.getAccountNo();
+
+		        System.out.println("Attempting transfer of " + amount + " from " + fromAccNo + " to " + toAccNo);
+		        System.out.println("From-account balance before transfer: " + fromBalance);
+		        System.out.println("To-account balance before transfer:   " + acct2.getBalance());
+
+		        // check sufficient funds
+		        if (fromBalance < amount) {
+		            System.out.println("Insufficient funds in account " + fromAccNo);
+		            return false;
+		        }
+
+		        // debit from source and credit destination
+		        acct.setBalance(fromBalance - amount);
+		        acct2.setBalance(acct2.getBalance() + amount);
+
+		        System.out.println("Transfer complete.");
+		        System.out.println("From-account balance after transfer: " + acct.getBalance());
+		        System.out.println("To-account balance after transfer:   " + acct2.getBalance());
+
+		        return true;
+		    }
+
+		    // Overload that matches the two-argument signature seen in your screenshot:
+		    // transfers a default amount (100.0). Replace or remove as needed.
+		    public boolean funstransfer(Account acct, Account acct2) {
+		        double defaultAmount = 100.0;
+		        return funstransfer(acct, acct2, defaultAmount);
+		    }
+		
+
+	 
+	 
+	 
+ }
+
