@@ -1,9 +1,0 @@
-package test1;
-
-public class Maven1test1 {
-
-	public Maven1test1() {
-		// TODO Auto-generated constructor stub
-	}
-
-}
