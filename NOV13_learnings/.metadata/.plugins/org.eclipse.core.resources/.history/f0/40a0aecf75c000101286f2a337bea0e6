@@ -1,0 +1,5 @@
+package com.assignment;
+
+public interface IndiaCountFxtnal {
+  int count(String line,String word);
+}

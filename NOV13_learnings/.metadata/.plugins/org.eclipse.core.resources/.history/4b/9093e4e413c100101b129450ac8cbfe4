@@ -1,0 +1,32 @@
+package com.book;
+
+
+
+import java.util.*;
+
+public class Bookdetails {
+
+	private int id;
+    private String publisher;
+    private List<Author> authors;
+    private String name;
+    private int pages;
+    private float price;
+    private EDITION edition;
+
+    public Book(int id, String publisher, List<Author> authors,
+                String name, int pages, float price, EDITION edition) {
+
+        this.id = id;
+        this.publisher = publisher;
+        this.authors = authors;
+        this.name = name;
+        this.pages = pages;
+        this.price = price;
+        this.edition = edition;
+    }
+
+    public String getName() {
+        return name;
+    }
+}

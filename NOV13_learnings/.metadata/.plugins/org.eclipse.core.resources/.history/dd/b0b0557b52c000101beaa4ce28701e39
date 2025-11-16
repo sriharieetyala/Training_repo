@@ -1,0 +1,28 @@
+package com.book;
+
+public class Bookdetails {
+
+    
+    String title;
+    String author;
+    int id;
+    int pages;
+
+    
+    public Bookdetails(String title, String author, int id,int pages) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+    }
+
+    
+    public void showInfo() {
+        System.out.println(title + " by " + author + " (" + pages + " pages)");
+    }
+
+    
+   public  boolean isLong() {
+        return pages > 300;
+    }
+}
+

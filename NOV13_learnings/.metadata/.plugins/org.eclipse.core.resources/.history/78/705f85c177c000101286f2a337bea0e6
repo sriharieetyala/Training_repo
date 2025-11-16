@@ -1,0 +1,44 @@
+package com.assignment;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+
+public class FunctionalIndiaCount {
+
+	public static void main(String[] args) {
+		int Tcount=0;
+		
+		String filename="C:\\Users\\sriha\\eclipse-new(nov13)\\Assignment1_Nov13\\src\\wordsofinida.txt";
+		
+		IndiaWordFuctional vari=(line,word) -> {
+			int c=0;
+			
+			String[] words=line.split("\\W+");
+			
+			for(String w:words) {
+				if(w.equalsIgnoreCase(word)) {
+					c++;
+				}
+			}
+			return c;
+		};
+		
+		
+		try(BufferedReader br=new BufferedReader(new FileReader(filename))){
+			String line;
+			 while((line=br.readLine())!=null) {
+				 Tcount=Tcount+vari.wordcount(line,"india");
+			 }
+			 
+			 System.out.println("Tcount");
+			
+			
+		}catch(Exception e) {
+			System.out.println("error reading file");
+		}
+				
+		
+
+	}
+
+}
